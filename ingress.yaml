@@ -11,5 +11,7 @@ spec:
         paths:
         - path: /
           backend:
-            serviceName: rk-api-service
-            servicePort: 8080
+            service:
+              name: rk-api-service
+              port:
+                number: 8080
