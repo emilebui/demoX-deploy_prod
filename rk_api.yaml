@@ -52,6 +52,7 @@ kind: Service
 metadata:
   name: rk-api-service
 spec:
+  type: NodePort
   selector:
     app: rk-api
   ports:
