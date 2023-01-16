@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rk_api
+  name: rk-api
   labels:
-    app: rk_api
+    app: rk-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: rk_api
+      app: rk-api
   template:
     metadata:
       labels:
-        app: rk_api
+        app: rk-api
     spec:
       containers:
-        - name: rk_api
+        - name: rk-api
           image: rk_api:latest
           ports:
             - containerPort: 8080
@@ -44,10 +44,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rk_api-service
+  name: rk-api-service
 spec:
   selector:
-    app: rk_api
+    app: rk-api
   ports:
     - protocol: TCP
       port: 8080

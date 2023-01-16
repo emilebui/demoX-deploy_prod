@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rk_worker
+  name: rk-worker
   labels:
-    app: rk_worker
+    app: rk-worker
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: rk_worker
+      app: rk-worker
   template:
     metadata:
       labels:
-        app: rk_worker
+        app: rk-worker
     spec:
       containers:
-        - name: rk_worker
+        - name: rk-worker
           image: rk_worker:latest
           env:
             - name: redis_addr
