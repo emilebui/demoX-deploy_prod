@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-config
+data:
+  queue_uri: redis-service:6379
+  redis_pwd: ""
+  redis_db: 0
+  redis_queue_key: "demoX_blah"

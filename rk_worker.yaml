@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rk_worker
+  labels:
+    app: rk_worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rk_worker
+  template:
+    metadata:
+      labels:
+        app: rk_worker
+    spec:
+      containers:
+        - name: rk_worker
+          image: rk_worker:latest
+          env:
+            - name: redis_addr
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: queue_uri
+            - name: redis_pwd
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: redis_pwd
+            - name: redis_db
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: redis_db
+            - name: redis_queue_key
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: redis_queue_key

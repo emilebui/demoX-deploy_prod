@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rk_api
+  labels:
+    app: rk_api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rk_api
+  template:
+    metadata:
+      labels:
+        app: rk_api
+    spec:
+      containers:
+        - name: rk_api
+          image: rk_api:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DEMO_REDIS_ADDR
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: queue_uri
+            - name: DEMO_REDIS_PWD
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: redis_pwd
+            - name: DEMO_REDIS_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: redis_db
+            - name: DEMO_REDIS_QUEUE_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: redis_queue_key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rk_api-service
+spec:
+  selector:
+    app: rk_api
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
