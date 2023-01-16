@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: rk-ingress
+spec:
+  rules:
+    - host: demo.test
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rk-api-service
+              servicePort: 8080
