@@ -41,6 +41,11 @@ spec:
                 configMapKeyRef:
                   name: demo-config
                   key: redis_queue_key
+            - name: DEMO_KAFKA_MODE
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: kafka_mode
 ---
 apiVersion: v1
 kind: Service
