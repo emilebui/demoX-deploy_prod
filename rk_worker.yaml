@@ -17,6 +17,7 @@ spec:
       containers:
         - name: rk-worker
           image: rk_worker:latest
+          imagePullPolicy: Never
           env:
             - name: redis_addr
               valueFrom:
