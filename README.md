@@ -64,7 +64,7 @@ deploy entire system for production
 ## Deployment
 ### Do the following steps:
   - `Setup config_map`: `kubectl apply -f config_map.yaml`
-  - `Deploy redis`: `kubectl apply -f config_map.yaml`
+  - `Deploy redis`: `kubectl apply -f redis.yaml`
   - `Deploy API`: `kubectl apply -f rk_api.yaml`
   - `Deploy Worker`: `kubectl apply -f rk_api.yaml`
   - `Deploy Ingress`: `kubectl apply -f ingress.yaml`
